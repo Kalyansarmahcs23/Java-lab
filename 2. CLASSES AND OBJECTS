@@ -1,0 +1,116 @@
+2. Classes and objects
+Q1. Create a student class with fields: name, ID, and marks. Include methods to input and 
+display details. 
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int id;
+    int marks;
+
+    // Method to input details
+    void inputDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Name: ");
+        name = sc.nextLine();
+        System.out.print("Enter ID: ");
+        id = sc.nextInt();
+        System.out.print("Enter Marks: ");
+        marks = sc.nextInt();
+    }
+
+    // Method to display details
+    void displayDetails() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("Name: " + name);
+        System.out.println("ID: " + id);
+        System.out.println("Marks: " + marks);
+    }
+}
+
+Q2. Design a class Rectangle with length and breadth. Add a method to calculate area and 
+perimeter. 
+import java.util.Scanner;
+
+class Rectangle {
+    double length, breadth;
+
+    // Method to input rectangle dimensions
+    void inputDimensions() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Length: ");
+        length = sc.nextDouble();
+        System.out.print("Enter Breadth: ");
+        breadth = sc.nextDouble();
+    }
+
+    // Method to calculate area
+    double area() {
+        return length * breadth;
+    }
+
+    // Method to calculate perimeter
+    double perimeter() {
+        return 2 * (length + breadth);
+    }
+}
+
+public class RectangleDemo {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle();
+        rect.inputDimensions();
+        System.out.println("\n--- Rectangle Details ---");
+        System.out.println("Area = " + rect.area());
+        System.out.println("Perimeter = " + rect.perimeter());
+    }
+}
+
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.inputDetails();
+        s1.displayDetails();
+    }
+}
+
+Q3.Create a class TemperatureConverter with a method that converts Celsius to Fahrenheit and 
+vice versa
+import java.util.Scanner;
+
+class TemperatureConverter {
+
+    // Celsius to Fahrenheit
+    double celsiusToFahrenheit(double c) {
+        return (c * 9/5) + 32;
+    }
+
+    // Fahrenheit to Celsius
+    double fahrenheitToCelsius(double f) {
+        return (f - 32) * 5/9;
+    }
+}
+
+public class TemperatureDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TemperatureConverter tc = new TemperatureConverter();
+
+        System.out.println("1. Celsius to Fahrenheit");
+        System.out.println("2. Fahrenheit to Celsius");
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+
+        if (choice == 1) {
+            System.out.print("Enter temperature in Celsius: ");
+            double c = sc.nextDouble();
+            System.out.println("Fahrenheit = " + tc.celsiusToFahrenheit(c));
+        } else if (choice == 2) {
+            System.out.print("Enter temperature in Fahrenheit: ");
+            double f = sc.nextDouble();
+            System.out.println("Celsius = " + tc.fahrenheitToCelsius(f));
+        } else {
+            System.out.println("Invalid Choice!");
+        }
+    }
+}
