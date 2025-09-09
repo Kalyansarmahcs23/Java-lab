@@ -1,0 +1,138 @@
+Q1. Create an abstract class Appliance with abstract method start(). Create concrete classes Fan
+and WashingMachine to implement it.
+// Abstract class
+abstract class Appliance {
+    abstract void start(); // abstract method
+}
+
+// Concrete class Fan
+class Fan extends Appliance {
+    @Override
+    void start() {
+        System.out.println("Fan starts spinning...");
+    }
+}
+
+// Concrete class WashingMachine
+class WashingMachine extends Appliance {
+    @Override
+    void start() {
+        System.out.println("Washing Machine starts washing clothes...");
+    }
+}
+
+public class ApplianceDemo {
+    public static void main(String[] args) {
+        // Using abstract class reference
+        Appliance a;
+
+        a = new Fan();
+        a.start();
+
+        a = new WashingMachine();
+        a.start();
+    }
+}
+
+Q2.Create a class BankAccount with private fields (account number, balance) and provide 
+public methods to access and update them using getters/setters. 
+
+class BankAccount {
+    // private fields
+    private String accountNumber;
+    private double balance;
+
+    // constructor
+    public BankAccount(String accNo, double bal) {
+        accountNumber = accNo;
+        balance = bal;
+    }
+
+    // getter for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    // getter for balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // setter for balance (deposit)
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // method for withdrawal
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Invalid withdrawal amount or insufficient funds.");
+        }
+    }
+}
+
+public class BankDemo {
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount("ACC12345", 1000);
+
+        System.out.println("Account No: " + acc.getAccountNumber());
+        System.out.println("Balance: " + acc.getBalance());
+
+        acc.deposit(500);
+        acc.withdraw(300);
+
+        System.out.println("Final Balance: " + acc.getBalance());
+    }
+}
+
+Q3. Demonstrate how abstraction works using interfaces: Define an interface Drawable and 
+implement it in Circle and Square.
+
+package bank;
+
+public class Customer {
+    public String name;       // accessible everywhere
+    private int age;          // accessible only inside this class
+    protected String address; // accessible in same package & subclasses
+    double balance;           // default → accessible only within same package
+
+    public Customer(String name, int age, String address, double balance) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.balance = balance;
+    }
+
+    // public method to access private age
+    public int getAge() {
+        return age;
+    }
+
+import bank.Customer;
+
+public class Main {
+    public static void main(String[] args) {
+        Customer c = new Customer("Ravi", 30, "Delhi", 5000.0);
+
+        // public field accessible
+        System.out.println("Name: " + c.name);
+
+        // private field not directly accessible
+        System.out.println("Age: " + c.getAge());
+
+        // protected and default members → only accessible within package or subclass
+        // System.out.println(c.address);  // ❌ ERROR
+        // System.out.println(c.balance);  // ❌ ERROR
+    }
+}
+}
+
+
