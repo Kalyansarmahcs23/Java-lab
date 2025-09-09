@@ -1,0 +1,117 @@
+Q1.Create a class Person with name and age. Derive a class Teacher with additional fields 
+subject and salary. Show how inheritance works. 
+// Base class
+class Person {
+    String name;
+    int age;
+
+    void inputPerson(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void displayPerson() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Derived class
+class Teacher extends Person {
+    String subject;
+    double salary;
+
+    void inputTeacher(String n, int a, String sub, double sal) {
+        inputPerson(n, a); // call base class method
+        subject = sub;
+        salary = sal;
+    }
+
+    void displayTeacher() {
+        displayPerson(); // call base class method
+        System.out.println("Subject: " + subject);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        Teacher t = new Teacher();
+        t.inputTeacher("Ravi", 35, "Mathematics", 55000);
+        System.out.println("--- Teacher Details ---");
+        t.displayTeacher();
+    }
+}
+
+Q2. Demonstrate constructor chaining in multilevel inheritance: Person → Employee → 
+Manager.
+
+class Person {
+    Person() {
+        System.out.println("Person constructor called");
+    }
+}
+
+class Employee extends Person {
+    Employee() {
+        super(); // calls Person constructor
+        System.out.println("Employee constructor called");
+    }
+}
+
+class Manager extends Employee {
+    Manager() {
+        super(); // calls Employee constructor
+        System.out.println("Manager constructor called");
+    }
+}
+
+public class ConstructorChainingDemo {
+    public static void main(String[] args) {
+        Manager m = new Manager();
+    }
+}
+
+Q3. Create a class Animal with method sound(). Override it in Dog, Cat, and Cow classes to 
+show different animal sounds.
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks: Woof Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows: Meow Meow");
+    }
+}
+
+class Cow extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cow moos: Moo Moo");
+    }
+}
+
+public class AnimalSoundDemo {
+    public static void main(String[] args) {
+        Animal a;
+
+        a = new Dog();
+        a.sound();
+
+        a = new Cat();
+        a.sound();
+
+        a = new Cow();
+        a.sound();
+    }
+}
