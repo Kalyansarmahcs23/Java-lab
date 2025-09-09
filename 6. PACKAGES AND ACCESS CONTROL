@@ -1,0 +1,89 @@
+Q1. Create a user-defined package mathops with a class Operations having methods add (), 
+subtract (). Import it into another class and use it. 
+package mathops;
+
+public class Operations {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+import mathops.Operations;
+
+public class Main {
+    public static void main(String[] args) {
+        Operations op = new Operations();
+        System.out.println("Addition: " + op.add(10, 5));
+        System.out.println("Subtraction: " + op.subtract(10, 5));
+    }
+}
+Q2. Show the use of all access modifiers (private, public, protected, and default) by creating 
+variables and methods in different classes. 
+class TestAccess {
+    public int pubVar = 10;        // accessible everywhere
+    private int priVar = 20;       // accessible only inside this class
+    protected int proVar = 30;     // accessible in same package + subclasses
+    int defVar = 40;               // default (package-private) → same package only
+
+    public void publicMethod() {
+        System.out.println("Public Method");
+    }
+
+    private void privateMethod() {
+        System.out.println("Private Method");
+    }
+
+    protected void protectedMethod() {
+        System.out.println("Protected Method");
+    }
+
+    void defaultMethod() {
+        System.out.println("Default Method");
+    }
+
+    public int getPrivateVar() {
+        return priVar;  // way to access private variable
+    }
+}
+
+public class AccessDemo {
+    public static void main(String[] args) {
+        TestAccess obj = new TestAccess();
+
+        // Access public
+        System.out.println("Public Var: " + obj.pubVar);
+        obj.publicMethod();
+
+        // Access private (only via getter)
+        System.out.println("Private Var: " + obj.getPrivateVar());
+
+        // Access protected & default (allowed since same package)
+        System.out.println("Protected Var: " + obj.proVar);
+        System.out.println("Default Var: " + obj.defVar);
+    }
+}
+
+Q3.Create two packages: package1 with class A and package2 with class B. Access class A
+from B using import.
+
+package package1;
+
+public class A {
+    public void showMessage() {
+        System.out.println("Hello from class A in package1!");
+    }
+}
+package package2;
+
+import package1.A; // importing class A
+
+public class B {
+    public static void main(String[] args) {
+        A obj = new A();
+        obj.showMessage();
+    }
+}
+
