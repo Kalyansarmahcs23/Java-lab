@@ -1,0 +1,117 @@
+1. Introduction to Java
+Q1. Write a program to take a student’s name, roll number, and marks in three subjects. 
+Calculate and display the total and average using Scanner.
+
+import java.util.Scanner;
+
+public class StudentDetails {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input student details
+        System.out.print("Enter Student Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Roll Number: ");
+        int roll = sc.nextInt();
+
+        System.out.print("Enter marks in Subject 1: ");
+        int m1 = sc.nextInt();
+
+        System.out.print("Enter marks in Subject 2: ");
+        int m2 = sc.nextInt();
+
+        System.out.print("Enter marks in Subject 3: ");
+        int m3 = sc.nextInt();
+
+        // Calculate total and average
+        int total = m1 + m2 + m3;
+        double average = total / 3.0;
+
+        // Display results
+        System.out.println("\n--- Student Report ---");
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + roll);
+        System.out.println("Total Marks: " + total);
+        System.out.println("Average Marks: " + average);
+
+        sc.close();
+    }
+}
+
+Q2.Write a program using switch-case to perform basic arithmetic operations: addition, 
+subtraction, multiplication, and division.
+
+import java.util.Scanner;
+
+public class SwitchCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input numbers
+        System.out.print("Enter first number: ");
+        double num1 = sc.nextDouble();
+
+        System.out.print("Enter second number: ");
+        double num2 = sc.nextDouble();
+
+        // Menu
+        System.out.println("\nChoose Operation:");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+
+        System.out.print("Enter your choice (1-4): ");
+        int choice = sc.nextInt();
+
+        // Switch case logic
+        switch (choice) {
+            case 1:
+                System.out.println("Result = " + (num1 + num2));
+                break;
+            case 2:
+                System.out.println("Result = " + (num1 - num2));
+                break;
+            case 3:
+                System.out.println("Result = " + (num1 * num2));
+                break;
+            case 4:
+                if (num2 != 0) {
+                    System.out.println("Result = " + (num1 / num2));
+                } else {
+                    System.out.println("Error: Division by zero not allowed.");
+                }
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+        sc.close();
+    }
+}
+
+Q3. Create a Java program to check whether a number is even or odd using if-else statements.
+
+import java.util.Scanner;
+
+public class EvenOddCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input number
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        // Check even/odd
+        if (num % 2 == 0) {
+            System.out.println(num + " is Even.");
+        } else {
+            System.out.println(num + " is Odd.");
+        }
+
+        sc.close();
+    }
+}
+
+
