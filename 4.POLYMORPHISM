@@ -1,0 +1,116 @@
+Q1. Create a class Calculator with method multiply (int, int) and multiply (double, double) to 
+demonstrate method overloading. 
+class Calculator {
+    // Multiply two integers
+    int multiply(int a, int b) {
+        return a * b;
+    }
+
+    // Multiply two doubles
+    double multiply(double a, double b) {
+        return a * b;
+    }
+}
+
+public class OverloadingDemo {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+
+        System.out.println("Multiplication of integers: " + calc.multiply(5, 6));
+        System.out.println("Multiplication of doubles: " + calc.multiply(4.5, 3.2));
+    }
+}
+
+Q2. Write a program where a superclass Shape has method area(). Override it in Circle, Triangle, 
+and Rectangle classes using runtime polymorphism. 
+
+class Shape {
+    double area() {
+        return 0;
+    }
+}
+
+class Circle extends Shape {
+    double radius;
+
+    Circle(double r) {
+        radius = r;
+    }
+
+    @Override
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Triangle extends Shape {
+    double base, height;
+
+    Triangle(double b, double h) {
+        base = b;
+        height = h;
+    }
+
+    @Override
+    double area() {
+        return 0.5 * base * height;
+    }
+}
+
+class Rectangle extends Shape {
+    double length, breadth;
+
+    Rectangle(double l, double b) {
+        length = l;
+        breadth = b;
+    }
+
+    @Override
+    double area() {
+        return length * breadth;
+    }
+}
+
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+        Shape s;
+
+        s = new Circle(5);
+        System.out.println("Circle Area = " + s.area());
+
+        s = new Triangle(4, 6);
+        System.out.println("Triangle Area = " + s.area());
+
+        s = new Rectangle(3, 7);
+        System.out.println("Rectangle Area = " + s.area());
+    }
+}
+
+Q3.  Demonstrate instanceof keyword to check object types in an inheritance hierarchy.
+class Animal {}
+
+class Dog extends Animal {}
+class Cat extends Animal {}
+
+public class InstanceofDemo {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+
+        if (a instanceof Dog) {
+            System.out.println("a is an instance of Dog");
+        }
+
+        if (a instanceof Animal) {
+            System.out.println("a is also an instance of Animal");
+        }
+
+        if (a instanceof Cat) {
+            System.out.println("a is an instance of Cat");
+        } else {
+            System.out.println("a is NOT an instance of Cat");
+        }
+    }
+}
+
+
+
